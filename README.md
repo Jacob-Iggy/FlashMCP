@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FlashMCP
 
-## Getting Started
+FlashMCP turns an OpenAPI document into a Model Context Protocol (MCP) server you can run
+on your own machine. Upload a spec, review the tools and resources that get generated, then
+download a server any AI agent can call.
 
-First, run the development server:
+This repository currently contains the marketing landing page. The upload, review, and
+generation flow will be added on top of it.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site runs at http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command         | Description                        |
+| --------------- | ---------------------------------- |
+| `npm run dev`   | Start the development server       |
+| `npm run build` | Create a production build          |
+| `npm start`     | Serve the production build         |
+| `npm run lint`  | Run ESLint                         |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/
+    layout.tsx      Root layout, fonts, metadata
+    page.tsx        Landing page composition
+    globals.css     Design tokens and base styles
+    icon.svg        Favicon
+  components/
+    layout/         Navbar
+    sections/       Hero, DemoVideo, HowItWorks, UseCases, FAQ, CtaFooter
+    ui/             Button, SectionHeader
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design system
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The interface is dark-only with a single red accent. All colors, the shadow, and the two
+animations live as custom properties in `src/app/globals.css` and are exposed to Tailwind
+through `@theme inline`, so components use utilities such as `bg-surface`, `text-ink-muted`,
+`border-line`, and `bg-accent` rather than hard-coded values.
 
-## Deploy on Vercel
+Motion is intentionally restrained: one staggered entrance in the hero, a blinking terminal
+caret, and short hover transitions. Everything is disabled under
+`prefers-reduced-motion: reduce`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Replacing the placeholder brand
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The wordmark is currently text with a small red dot, defined in
+`src/components/layout/Navbar.tsx` and `src/components/sections/CtaFooter.tsx`. To use a real
+logo, drop the asset in `public/` and swap the dot span for an `Image`. The favicon lives at
+`src/app/icon.svg`.
+
+## Demo video
+
+The demo section in `src/components/sections/DemoVideo.tsx` renders an empty 16:9 placeholder.
+Replace the placeholder block with a `<video>` element or an embed once the recording exists.
+
+## Tech stack
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- Geist Sans and Geist Mono
