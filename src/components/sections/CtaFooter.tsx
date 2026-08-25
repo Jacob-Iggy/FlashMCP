@@ -8,9 +8,12 @@ import { GetStartedButton } from "@/components/get-started/GetStartedButton";
 import { BrandMark } from "@/components/ui/BrandMark";
 
 const footerLinks = [
-  { label: "GitHub", href: "#" },
-  { label: "Docs", href: "#" },
-  { label: "Model Context Protocol", href: "#" },
+  { label: "GitHub", href: "https://github.com/Jacob-Iggy/FlashMCP" },
+  {
+    label: "Docs",
+    href: "https://github.com/Jacob-Iggy/FlashMCP#readme",
+  },
+  { label: "Model Context Protocol", href: "https://modelcontextprotocol.io" },
 ];
 
 export function CtaFooter() {
@@ -59,6 +62,8 @@ export function CtaFooter() {
               <a
                 key={link.label}
                 href={link.href}
+                target="_blank"
+                rel="noreferrer"
                 className="text-xs text-ink-muted transition-colors duration-150 hover:text-ink"
               >
                 {link.label}

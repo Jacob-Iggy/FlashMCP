@@ -1,82 +1,67 @@
 # FlashMCP
 
-FlashMCP turns an OpenAPI document into a Model Context Protocol (MCP) server you can run
-on your own machine. Upload a spec, review the tools and resources that get generated, then
-download a server any AI agent can call.
+FlashMCP is a web application that turns an OpenAPI specification into a downloadable [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server. It makes it easier to connect existing APIs to AI agents without manually translating every endpoint into agent-ready tools.
 
-This repository currently contains the marketing landing page. The upload, review, and
-generation flow will be added on top of it.
+**Live site:** [flashmcp.jacobiggy.com](https://flashmcp.jacobiggy.com)
 
-## Getting started
+## What it does
+
+1. Upload an OpenAPI document.
+2. Use AI to identify the API endpoints that make useful MCP tools and resources.
+3. Review and refine the proposed tools.
+4. Generate a TypeScript MCP server configured for the selected API and download it to run locally.
+
+The generated server supports common authentication approaches, resolves endpoint schemas from the source specification, and uses the MCP SDK's standard I/O transport so it can be connected to compatible AI clients.
+
+## Why I built it
+
+I am getting deeper into AI and learning how MCP can make AI agents more useful with real-world tools and data. My background is in building websites and APIs, so FlashMCP is where those interests meet: a practical way to help developers test and connect an API to an AI agent with less setup and friction.
+
+## Technology
+
+- **Next.js 16** with the App Router and Route Handlers
+- **React 19** and **TypeScript**
+- **Tailwind CSS v4** for the interface and responsive styling
+- **OpenAI API** for OpenAPI analysis and MCP server generation
+- **Model Context Protocol SDK** as the foundation for generated servers
+- **Vercel** for deployment and hosting
+- **Cloudflare** for DNS and edge network services
+
+## Local development
 
 ```bash
 npm install
+```
+
+Create a `.env.local` file and add an OpenAI API key:
+
+```bash
+OPENAI_API_KEY=your_api_key
+```
+
+Then start the development server:
+
+```bash
 npm run dev
 ```
 
-The site runs at http://localhost:3000.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Deploying to Vercel
+## Available scripts
 
-This is a Next.js application, so it can be imported directly into Vercel without
-additional build configuration. Select this repository, leave the detected framework
-as **Next.js**, and deploy.
-
-Before deploying, add `OPENAI_API_KEY` under **Project Settings → Environment
-Variables** for Production, Preview, and Development. This key is used only by the
-server-side API routes and must never be committed to the repository.
-
-## Scripts
-
-| Command         | Description                        |
-| --------------- | ---------------------------------- |
-| `npm run dev`   | Start the development server       |
-| `npm run build` | Create a production build          |
-| `npm start`     | Serve the production build         |
-| `npm run lint`  | Run ESLint                         |
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Starts the local development server. |
+| `npm run build` | Creates an optimized production build. |
+| `npm run start` | Serves a production build locally. |
+| `npm run lint` | Runs ESLint. |
 
 ## Project structure
 
-```
+```text
 src/
-  app/
-    layout.tsx      Root layout, fonts, metadata
-    page.tsx        Landing page composition
-    globals.css     Design tokens and base styles
-    icon.svg        Favicon
-  components/
-    layout/         Navbar
-    sections/       Hero, DemoVideo, HowItWorks, UseCases, FAQ, CtaFooter
-    ui/             Button, SectionHeader
+├── app/                   # Pages and API routes
+├── components/            # Landing, review, and generator UI
+├── lib/                   # OpenAPI parsing and generation utilities
+└── mcp-server-template.ts # Reference template for generated servers
 ```
-
-## Design system
-
-The interface is dark-only with a single red accent. All colors, the shadow, and the two
-animations live as custom properties in `src/app/globals.css` and are exposed to Tailwind
-through `@theme inline`, so components use utilities such as `bg-surface`, `text-ink-muted`,
-`border-line`, and `bg-accent` rather than hard-coded values.
-
-Motion is intentionally restrained: one staggered entrance in the hero, a blinking terminal
-caret, and short hover transitions. Everything is disabled under
-`prefers-reduced-motion: reduce`.
-
-## Replacing the placeholder brand
-
-The wordmark is currently text with a small red dot, defined in
-`src/components/layout/Navbar.tsx` and `src/components/sections/CtaFooter.tsx`. To use a real
-logo, drop the asset in `public/` and swap the dot span for an `Image`. The favicon lives at
-`src/app/icon.svg`.
-
-## Demo video
-
-The demo section in `src/components/sections/DemoVideo.tsx` renders an empty 16:9 placeholder.
-Replace the placeholder block with a `<video>` element or an embed once the recording exists.
-
-## Tech stack
-
-- Next.js 16 (App Router)
-- React 19
-- TypeScript
-- Tailwind CSS v4
-- Geist Sans and Geist Mono

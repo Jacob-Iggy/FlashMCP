@@ -54,7 +54,7 @@ export function Hero() {
             className="animate-rise mt-4 text-sm text-ink-faint"
             style={{ animationDelay: "200ms" }}
           >
-            Free to try. We don't keep your file after the session.
+            Free to try. We don&apos;t keep your file after the session.
           </p>
         </div>
 
