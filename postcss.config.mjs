@@ -1,3 +1,9 @@
+/*
+ * FlashMCP
+ * Creator: Iggy
+ * PostCSS config.
+ */
+
 const config = {
   plugins: {
     "@tailwindcss/postcss": {},

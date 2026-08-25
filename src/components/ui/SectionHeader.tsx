@@ -1,3 +1,9 @@
+/*
+ * FlashMCP
+ * Creator: Iggy
+ * Title block for landing page sections.
+ */
+
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -14,7 +20,7 @@ export function SectionHeader({
   title,
   titleId,
   description,
-  align = "left",
+  align = "center",
 }: SectionHeaderProps) {
   const centered = align === "center";
 
@@ -26,12 +32,16 @@ export function SectionHeader({
       <Eyebrow>{eyebrow}</Eyebrow>
       <h2
         id={titleId}
-        className="mt-5 text-3xl font-medium tracking-tight text-balance sm:text-4xl"
+        className="mt-4 text-3xl font-semibold tracking-tight text-balance sm:mt-5 sm:text-4xl lg:text-[40px] lg:leading-[1.15]"
       >
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-base leading-relaxed text-ink-muted">
+        <p
+          className={`mt-3 text-base leading-relaxed text-ink-muted sm:mt-3.5 ${
+            centered ? "mx-auto max-w-xl" : "max-w-xl"
+          }`}
+        >
           {description}
         </p>
       ) : null}

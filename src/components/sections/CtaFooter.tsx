@@ -1,7 +1,11 @@
-import { Button } from "@/components/ui/Button";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ArrowRightIcon } from "@/components/ui/icons";
-import { Reveal } from "@/components/ui/Reveal";
+/*
+ * FlashMCP
+ * Creator: Iggy
+ * Bottom call to action and footer links.
+ */
+
+import { GetStartedButton } from "@/components/get-started/GetStartedButton";
+import { BrandMark } from "@/components/ui/BrandMark";
 
 const footerLinks = [
   { label: "GitHub", href: "#" },
@@ -12,42 +16,41 @@ const footerLinks = [
 export function CtaFooter() {
   return (
     <>
-      <section className="border-t border-line py-20 sm:py-24">
-        <div className="mx-auto w-full max-w-[1120px] px-6">
-          <Reveal className="mx-auto max-w-xl text-center">
-            <Eyebrow>Get started</Eyebrow>
-            <h2 className="mt-5 text-2xl font-medium tracking-tight text-balance sm:text-3xl">
-              Ready to flash-wrap your API?
-            </h2>
-            <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-ink-muted">
-              Start with an OpenAPI document and finish with a server your agents
-              can call.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Button href="#demo">
-                Get started
-                <ArrowRightIcon className="transition-transform duration-200 group-hover/btn:translate-x-0.5" />
-              </Button>
-              <Button href="#faq" variant="ghost">
-                Read the FAQ
-              </Button>
+      <section className="py-14 sm:py-16 lg:py-20">
+        <div className="mx-auto w-full max-w-5xl px-6">
+          <div className="relative flex min-h-[280px] items-center justify-center overflow-hidden rounded-[24px] border border-white/[0.06] bg-black px-6 py-12 text-center sm:min-h-[300px] sm:rounded-[28px] sm:px-8 sm:py-14">
+            <div
+              aria-hidden
+              className="cta-card-glow pointer-events-none absolute inset-x-0 bottom-0 h-[55%] sm:h-[60%]"
+            />
+
+            <div className="relative z-10 mx-auto flex max-w-lg flex-col items-center">
+              <h2 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl lg:text-[34px] lg:leading-[1.2]">
+                Have an OpenAPI file? Get an MCP server.
+              </h2>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
+                Upload your file, review the tools, and download a server your
+                agents can call.
+              </p>
+              <div className="mt-6">
+                <GetStartedButton variant="secondary" size="lg">
+                  Upload OpenAPI
+                </GetStartedButton>
+              </div>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
-      <footer className="border-t border-line py-10">
-        <div className="mx-auto flex w-full max-w-[1120px] flex-col gap-6 px-6 sm:flex-row sm:items-center sm:justify-between">
+      <footer className="border-t border-line py-8 sm:py-10">
+        <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-5 px-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-              <span
-                aria-hidden
-                className="size-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--accent)]"
-              />
+            <p className="flex items-center gap-2.5 text-sm font-semibold tracking-tight">
+              <BrandMark size="sm" />
               FlashMCP
             </p>
             <p className="mt-2 text-xs text-ink-faint">
-              OpenAPI specs into local MCP servers.
+              Give agents access to your API.
             </p>
           </div>
 

@@ -1,22 +1,32 @@
+/*
+ * FlashMCP
+ * Creator: Iggy
+ * Shared button used across the site.
+ */
+
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-type ButtonVariant = "primary" | "ghost" | "link";
-type ButtonSize = "sm" | "md";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "link";
+type ButtonSize = "sm" | "md" | "lg";
 
 const base =
-  "group/btn inline-flex items-center justify-center gap-2 rounded-lg font-medium whitespace-nowrap transition-colors duration-200 disabled:pointer-events-none disabled:opacity-50";
+  "group/btn inline-flex cursor-pointer items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap transition-[background-color,border-color,color,box-shadow,transform] duration-200 disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<ButtonVariant, string> = {
-  primary: "bg-accent text-white hover:bg-accent-hover active:bg-accent-press",
+  primary:
+    "bg-accent text-white shadow-[0_10px_28px_-10px_rgba(239,68,68,0.55)] hover:bg-accent-hover active:bg-accent-press",
+  secondary:
+    "bg-white text-black hover:bg-white/90 active:bg-white/80",
   ghost:
-    "border border-line-strong text-ink hover:border-white/25 hover:bg-white/[0.04]",
+    "border border-line-strong bg-white/[0.02] text-ink hover:border-white/25 hover:bg-white/[0.05]",
   link: "text-ink-muted hover:text-ink",
 };
 
 const sizes: Record<ButtonSize, string> = {
-  sm: "h-9 px-3.5 text-[13px]",
+  sm: "h-9 px-4 text-[13px]",
   md: "h-11 px-5 text-sm",
+  lg: "h-12 px-6 text-[15px]",
 };
 
 type BaseProps = {

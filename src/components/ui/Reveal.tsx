@@ -1,5 +1,11 @@
 "use client";
 
+/*
+ * FlashMCP
+ * Creator: Iggy
+ * Fades a block in when it scrolls into view.
+ */
+
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type RevealProps = {

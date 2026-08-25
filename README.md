@@ -16,6 +16,16 @@ npm run dev
 
 The site runs at http://localhost:3000.
 
+## Deploying to Vercel
+
+This is a Next.js application, so it can be imported directly into Vercel without
+additional build configuration. Select this repository, leave the detected framework
+as **Next.js**, and deploy.
+
+Before deploying, add `OPENAI_API_KEY` under **Project Settings → Environment
+Variables** for Production, Preview, and Development. This key is used only by the
+server-side API routes and must never be committed to the repository.
+
 ## Scripts
 
 | Command         | Description                        |

@@ -1,3 +1,9 @@
+/*
+ * FlashMCP
+ * Creator: Iggy
+ * FAQ section on the landing page.
+ */
+
 import { FaqList } from "@/components/sections/FaqList";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -6,22 +12,22 @@ const faqs = [
   {
     question: "What is an MCP server?",
     answer:
-      "A Model Context Protocol server exposes tools and resources in a format AI agents understand. Once it is running, an agent can call your API through it without any custom integration code.",
+      "An MCP server lets AI agents call tools in a shared format. Once yours is running, an agent can use your API through it without custom integration code.",
   },
   {
-    question: "What OpenAPI formats are supported?",
+    question: "What files can I upload?",
     answer:
-      "OpenAPI documents in JSON or YAML. Older Swagger specs are on the roadmap and will be converted before parsing.",
+      "OpenAPI files in JSON or YAML. Support for older Swagger specs is on the roadmap.",
   },
   {
-    question: "Does FlashMCP host my server?",
+    question: "Do you host my server or store my credentials?",
     answer:
-      "No. FlashMCP generates a project you run yourself, so requests to your API leave from your machine and your credentials never pass through a third party.",
+      "No. FlashMCP gives you a project to run yourself. Requests to your API leave from your machine, and your credentials never pass through us.",
   },
   {
-    question: "Is my API spec stored?",
+    question: "Is my OpenAPI file saved?",
     answer:
-      "Specs are used only to generate your server and are not kept after the session ends. Nothing is added to a shared dataset.",
+      "We only use it to generate your server, and we don't keep it after the session ends. Nothing goes into a shared dataset.",
   },
 ];
 
@@ -29,18 +35,18 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="border-t border-line py-20 sm:py-24"
+      className="py-14 sm:py-16 lg:py-20"
       aria-labelledby="faq-title"
     >
-      <div className="mx-auto grid w-full max-w-[1120px] gap-12 px-6 lg:grid-cols-[320px_1fr] lg:gap-20">
+      <div className="mx-auto w-full max-w-[1200px] px-6">
         <SectionHeader
           eyebrow="FAQ"
-          title="Questions, answered"
+          title="Before you upload"
           titleId="faq-title"
-          description="What FlashMCP does, and what it deliberately leaves on your machine."
+          description="Quick answers on hosting, privacy, and what you get."
         />
 
-        <Reveal delay={80}>
+        <Reveal delay={80} className="mx-auto mt-10 max-w-3xl sm:mt-12">
           <FaqList items={faqs} />
         </Reveal>
       </div>

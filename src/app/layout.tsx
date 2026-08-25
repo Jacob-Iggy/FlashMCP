@@ -1,3 +1,9 @@
+/*
+ * FlashMCP
+ * Creator: Iggy
+ * Root layout for the whole site.
+ */
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Backdrop } from "@/components/layout/Backdrop";
@@ -14,13 +20,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FlashMCP — OpenAPI to MCP Server Generator",
+  title: "FlashMCP | Give agents access to your API",
   description:
-    "Upload an OpenAPI spec, review AI-generated tools, and download a locally hostable MCP server.",
+    "Upload an OpenAPI file, pick the tools you want, and download a local MCP server that Cursor, Claude, and other agents can call.",
   openGraph: {
-    title: "FlashMCP — OpenAPI to MCP Server Generator",
+    title: "FlashMCP | Give agents access to your API",
     description:
-      "Upload an OpenAPI spec, review AI-generated tools, and download a locally hostable MCP server.",
+      "Upload an OpenAPI file, pick the tools you want, and download a local MCP server that Cursor, Claude, and other agents can call.",
     siteName: "FlashMCP",
     type: "website",
   },
